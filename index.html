@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>biblioteca_do_conhecimento</title>
+        <style>
+            /* Reset CSS: Please avoid making changes here unless you know what you're doing :) */
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            html, body {
+                width: 100%;
+                height: 100%;
+            }
+    
+            body {
+                line-height: 1;
+                font-family: Arial, sans-serif;
+                background-color: #040218;
+            }
+    
+            ol, ul {
+                list-style: none;
+            }
+    
+            img, video {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+    
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="error-container" style="display:none; position:fixed; top:0; left:0; width:100%; background:rgba(255,0,0,0.9); color:white; padding:20px; z-index:9999; font-family:monospace;">
+            <h3>Error Occurred:</h3>
+            <pre id="error-message"></pre>
+            <button onclick="document.getElementById('error-container').style.display='none'">Close</button>
+        </div>
+        <script>
+            window.onerror = function(msg, url, lineNo, columnNo, error) {
+                const container = document.getElementById('error-container');
+                const message = document.getElementById('error-message');
+                container.style.display = 'block';
+                message.textContent = `Error: ${msg}\nFile: ${url}\nLine: ${lineNo}\nColumn: ${columnNo}\nStack: ${error ? error.stack : 'N/A'}`;
+                return false;
+            };
+            window.onunhandledrejection = function(event) {
+                const container = document.getElementById('error-container');
+                const message = document.getElementById('error-message');
+                container.style.display = 'block';
+                message.textContent = `Unhandled Rejection: ${event.reason}`;
+            };
+        </script>
+        <div id="game-container"></div>
+        <script src="./phaser.js"></script>
+        <script type="module" src="./src/main.js"></script>
+    </body>
+    </html>
