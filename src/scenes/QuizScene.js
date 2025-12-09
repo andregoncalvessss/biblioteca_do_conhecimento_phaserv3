@@ -50,6 +50,9 @@ export class QuizScene extends Phaser.Scene {
         if (isCorrect) {
             button.setFillStyle(0x2ecc71); // Verde para correto
             this.add.text(640, 600, 'Correto!', { fontSize: '40px', fill: '#2ecc71' }).setOrigin(0.5);
+            if (this.cache.audio.exists('correct')) {
+                this.sound.play('correct'); // Tocar som "plim"
+            }
         } else {
             button.setFillStyle(0xe74c3c); // Vermelho para errado
             this.add.text(640, 600, 'Errado!', { fontSize: '40px', fill: '#e74c3c' }).setOrigin(0.5);

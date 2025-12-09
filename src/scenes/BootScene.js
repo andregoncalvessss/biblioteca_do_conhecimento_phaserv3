@@ -13,7 +13,12 @@ export class BootScene extends Phaser.Scene {
         this.load.spritesheet('char3', 'assets/character3.png', { frameWidth: 512, frameHeight: 512 });
 
         // Carregar recursos de Interface (UI) e Efeitos Especiais (FX)
+        // Carregar recursos de Interface (UI) e Efeitos Especiais (FX)
         this.load.image('shine', 'assets/shine.png'); // Imagem para o brilho dos livros
+
+        // Carregar Áudio
+        this.load.audio('theme', 'assets/music.mp3');
+        this.load.audio('correct', 'assets/plim.mp3');
 
         // Carregar Mapas (Tilemaps) e Conjunto de Tiles (Tileset)
         this.load.image('tiles', 'assets/libassetpack-tiled.png'); // A imagem com todas as texturas

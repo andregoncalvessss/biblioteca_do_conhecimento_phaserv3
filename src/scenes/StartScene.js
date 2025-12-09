@@ -10,6 +10,19 @@ export class StartScene extends Phaser.Scene {
         // Cria um retângulo que cobre todo o ecrã
         this.add.rectangle(0, 0, 1280, 720, 0x1a0b2e).setOrigin(0);
 
+        // Música de Fundo
+        // Verificar se o áudio existe na cache antes de tentar tocar
+        if (this.cache.audio.exists('theme')) {
+            if (!this.sound.get('theme')) {
+                this.sound.play('theme', {
+                    loop: true,
+                    volume: 0.5
+                });
+            } else if (!this.sound.get('theme').isPlaying) {
+                this.sound.get('theme').play();
+            }
+        }
+
         // 2. Partículas - Pó Mágico
         // Usa a textura 'shine' carregada na BootScene
         // Sintaxe Phaser 3.60+: this.add.particles(x, y, texture, config)
